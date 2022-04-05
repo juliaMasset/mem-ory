@@ -1,1 +1,0 @@
-[question]: .README/question.png
