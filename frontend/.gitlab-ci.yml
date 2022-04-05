@@ -1,0 +1,49 @@
+variables:
+  M3_PRESS_INPUT_FOLDER: docs
+
+stages:
+  - doc
+
+build-doc:
+  stage: doc
+  tags:
+    - "m3-press"
+  image: node:14
+  before_script:
+    - npm config set unsafe-perm true
+    - npm config set strict-ssl false
+    - npm config set @master3:registry=${CI_API_V4_URL}/packages/npm/
+    - npm config set //${CI_SERVER_HOST}/api/v4/packages/npm/:_authToken=${CI_JOB_TOKEN}
+  script:
+    - echo "building folder ${M3_PRESS_INPUT_FOLDER} with m3-press..."
+    - rm -f package.json && npm init -y > /dev/null && npm i @master3/press
+    - ./node_modules/.bin/m3press build ${M3_PRESS_INPUT_FOLDER}
+  artifacts:
+    paths:
+      - "dist"
+    untracked: false
+    expire_in: 30 days
+  rules:
+    - if: '$CI_COMMIT_REF_PROTECTED == "true"'
+
+publish-doc:
+  stage: doc
+  image: node:14
+  tags:
+    - "m3-press"
+  needs:
+    - build-doc
+  before_script:
+    - which rsync || ( apt update && apt install -y rsync )
+    - eval $(ssh-agent -s)
+    - echo "$M3_PRESS_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan ${M3_PRESS_HOST} >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  rules:
+    - if: '$CI_COMMIT_REF_PROTECTED == "true"'
+  script:
+    - echo "publishing ${M3_PRESS_INPUT_FOLDER} to ${M3_PRESS_HOST}..."
+    - ssh  ${M3_PRESS_SSH_USER}@${M3_PRESS_HOST} 'mkdir -p ~/m3-press-data || chown -R ${M3_PRESS_SSH_USER}:${M3_PRESS_SSH_USER} m3-press-data'
+    - cd dist; rsync --delete-before -avr * ${M3_PRESS_SSH_USER}@${M3_PRESS_HOST}:~/m3-press-data

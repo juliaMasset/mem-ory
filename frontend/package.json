@@ -1,0 +1,21 @@
+{
+  "name": "es6-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@master3.takima.io:master3/es6-01.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@master3/press": "file:../../tools/m3-stack/packages/m3-press/master3-press-1.0.6.tgz"
+  }
+}
