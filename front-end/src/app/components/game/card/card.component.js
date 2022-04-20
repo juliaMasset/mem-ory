@@ -23,8 +23,6 @@
         "./card/assets/back.png";
     }
 
-
-    /* method CardComponent.getElement */
     // TODO Step 7: remove this method
     getElement() {
       if (!this._elt) {
@@ -46,12 +44,10 @@
       return card._id === this._id;
     }
 
-    /* CardComponent.get flipped() */
     get flipped() {
       return this._flipped;
     }
   }
-
   // put component in global scope, to be runnable right from the HTML.
   // TODO Step 7 export CardComponent
   window.CardComponent = CardComponent;

@@ -2,24 +2,22 @@
 // TODO Step 7 import { Component } from "../../utils/component";
 // TODO Step 7 import template from "./score.component.html"
 
-(function() {      // TODO Step 6 remove this closure
+(function () {      // TODO Step 6 remove this closure
 
-    // TODO Step 3.1 create a class
-    /* class ScoreComponent constructor */
-    function ScoreComponent() {
-        var params = parseUrl();
-        this.name = params.name;
-        this.size = parseInt(params.size);
-        this.time = parseInt(params.time);
+    class ScoreComponent {
+        constructor(id) {
+            var params = parseUrl();
+            this.name = params.name;
+            this.size = parseInt(params.size);
+            this.time = parseInt(params.time);
+        }
+
+        init() {
+            document.getElementById('name').innerText = this.name;
+            document.getElementById('size').innerText = this.size;
+            document.getElementById('time').innerText = this.time;
+        }
     }
-
-    /* method ScoreComponent.init */
-    ScoreComponent.prototype.init = function init() {
-        document.getElementById('name').innerText = this.name;
-        document.getElementById('size').innerText = this.size;
-        document.getElementById('time').innerText = this.time;
-    }
-
     // TODO Step 7 implement getTemplate() {}
 
     // TODO Step 6: Move this method to utils.js
