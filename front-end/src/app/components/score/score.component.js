@@ -2,7 +2,7 @@
 // TODO Step 7 import { Component } from "../../utils/component";
 // TODO Step 7 import template from "./score.component.html"
 
-(()=> {      // TODO Step 6 remove this closure
+(() => {      // TODO Step 6 remove this closure
 
     class ScoreComponent {
         constructor(id) {
@@ -30,13 +30,10 @@
         let parts = query
             .split(delimiter);
         // TODO Step 3.3: Use Array.map() & Array.reduce()
-        for (let i in parts) {
-            let item = parts[i];
-            let kv = item.split('=');
+        return parts.map(items => items.split("=")).reduce((result, kv) => {
             result[kv[0]] = kv[1];
-        }
-
-        return result;
+            return result;
+        }, {});
     }
 
     // put component in global scope, to be runnable right from the HTML.
