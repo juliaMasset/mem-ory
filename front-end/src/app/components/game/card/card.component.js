@@ -1,7 +1,7 @@
 // TODO Step 7 import { Component } from "../../../utils/component";
 // TODO Step 7 import template from  "./card.component.html"
 
-(function () {
+(()=> {
   // TODO Step 7 remove this closure
 
   class CardComponent {
@@ -15,12 +15,11 @@
       this._id = id;
 
       this._imageElt = this.getElement().querySelector(".card-wrapper");
-      // TODO Step 3.2: use template literals (backquotes)
       // TODO Step 7: Update the path for images with 'src/app/components/game/card/assets/card***'
       this._imageElt.querySelector("img.front-face").src =
-        "./card/assets/card-" + this._id + ".png";
+        `./card/assets/card-${this._id}.png`;
       this._imageElt.querySelector("img.back-face").src =
-        "./card/assets/back.png";
+        `./card/assets/back.png`;
     }
 
     // TODO Step 7: remove this method
@@ -53,7 +52,7 @@
   window.CardComponent = CardComponent;
 })();
 
-var environment = {
+let environment = {
   api: {
     host: "See that ? Without closures, I can override variables from other files that belongs to the global scope.",
   },
