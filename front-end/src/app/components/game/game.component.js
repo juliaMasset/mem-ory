@@ -1,9 +1,8 @@
-// TODO Step 6 import { parseUrl } from '../../utils/utils.js';
 // TODO Step 7 import { Component } from "../../utils/component";
 // TODO Step 7 import template from "./game.component.html"
 
-(() => {
-  // TODO Step 6 remove this closure
+import { parseUrl } from "../../utils/utils";
+
   let environment = {
     api: {
       host: "http://localhost:8081",
@@ -136,24 +135,6 @@
 
   }
 
-  // TODO Step 6: Move this method to utils.js
-  function parseUrl() {
-    debugger;
-    let url = window.location;
-    let query = url.href.split("?")[1] || "";
-    let delimiter = "&";
-    let result = {};
-
-    let parts = query.split(delimiter);
-    
-    return parts.map(items => items.split("=")).reduce((result, kv) => {
-      result[kv[0]] = kv[1];
-      return result;
-    }, {});
-
-  }
-
   // put component in global scope, to be runnable right from the HTML.
   // TODO Step 7: export GameComponent
   window.GameComponent = GameComponent;
-})();
