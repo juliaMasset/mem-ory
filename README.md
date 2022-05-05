@@ -1,8 +1,9 @@
 # Mem-ory: réponses
 
-## Step 0
+# Step 0
+## Question 1:
+Play the whole game with size=2. By browsing the 3 views of the application, how many files did your browser download overall? How many time did it took to load them all?
 
-### Play the whole game with size=2. By browsing the 3 views of the application, how many files did your browser download overall? How many time did it took to load them all?
 
 
 
