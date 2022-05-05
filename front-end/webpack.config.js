@@ -14,8 +14,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
-    assetModuleFilename: "[path][name][ext]",
   },
+  devtool: "eval-cheap-module-source-map",
   module: {
     rules: [
       {

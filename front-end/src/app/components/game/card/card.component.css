@@ -1,9 +1,8 @@
 /*****
  * Card Component
  */
-
-/* card { ... } */
-.card-cmp {
+ 
+ .card-cmp {
     position: relative;
     display: inline-block !important;
 
