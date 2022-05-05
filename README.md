@@ -44,6 +44,22 @@ Elle est automatiquement répertoriée dans le fichier package.json dans `depend
 ## Question 7:
 Can you think of at least 2 things that are possible with Java classes, but cannot be done with ES6 classes?
 
+On ne peut pas faire de surcharges de méthodes et d'interfaces en ES6 contrairement à Java. 
+
+## Question 8:
+What are the differences between var and let?
+
+`let` permet de déclarer des variables dont la portée est celle du bloc courant alors que `var` permet de définir une variable globale ou locale à une fonction sans distinction des blocs utilisés dans la fonction.
+
+## Question 9:
+What is the .bind(this) stuff? What does happen if you delete it? Is it needed when using an arrow function ?
+
+La bind() est une méthode qui renvoie une nouvelle fonction lorsqu'elle est appelée. La nouvelle fonction créée est une copie de la méthode qui précède le bind(this). Le bind(this) n'est pas nécessaire lorsqu'on utilise une arrow function.
+
+
+# Step 4
+## Question 10:
+What are the advantages of Promises?
 
 
 
