@@ -61,7 +61,53 @@ La bind() est une méthode qui renvoie une nouvelle fonction lorsqu'elle est app
 ## Question 10:
 What are the advantages of Promises?
 
+Une promesse est un objet qui est renvoyé et auquel on attache des callbacks plutôt que de passer des callbacks à une fonction. Au lieu d'avoir une fonction qui prend deux callbacks en arguments, on aura une fonction qui renvoie une promesse et on attachera les callbacks sur cette promesse.
+Les promesses permettent de résoudre les problèmes de cascades de callbacks en interceptant les différentes erreurs (exceptions et erreurs de programmation). C'est essentiel pour obtenir une composition fonctionnelle des opérations asynchrones.
+
+## Question 11:
+What version of ECMAScript `async`/`await` was released in?
+
+`Async`/`await` ont été ajoutés dans la version ECMA-262 de 2017 (8ème édition).
 
 
+# Step 5
+## Question 12:
 
+What does the `@` symbol mean in `@babel/***`?
+
+Le symbole `@` indique l'auteur de la bibliothèque. Cela permet d'avoir plusieurs bibliothèques similaires avec des auteurs différents. Ici, babel étant l'auteur et après le symbole `/` se trouve la bibliothèque.
+
+## Question 13:
+Look at the files produced within `dist/ folder`. How babel transpile your class `WelcomeComponent`?
+
+Babel ajoute des méthodes `require()` qui importent des fonctions déjà existantes en ES5 qui ont la même utilité que le code en ES6. 
+
+## Question 14:
+What is the weight of the transpiled sources compared to your original sources?
+
+Les fichiers transpilés sont plus lourds que les fichiers originaux en ES6 car certaines fonctionnalités d'ES6 n'existent pas dans les versions antérieures et nécessitent plusieurs lignes pour arriver à un résultat identique. Exemple: le fichier `score.component.js` en ES6 est de 700 octets environ, alors que celui transpilé est de 1Ko.
+
+
+# Step 6
+## Question 15:
+What is the difference between `import * from './utils'` and `import { parseUrl } from './utils'`?
+
+`import *` permet d'importer toutes les fonctions (du dossier `./utils` ici), alors que `import { parseUrl }` permet d'importer uniquement la fonction `parseUrl` du dosssier.
+
+## Question 16:
+Why the `utils.js` will also be transpiled?
+
+Le fichier `utils.js` est aussi transpilé car il se trouve dans le dossier `./app` et que tous les fichiers `.js` de ce dossier sont transpilés.
+
+## Question 17:
+What does the webpack `--config webpack.config.js` do ?
+
+Cela permet de regrouper tous les fichiers de l'app et de la lire dans tous les navigateurs.
+
+
+# Step 7
+## Question 18:
+Play the whole game with size=2. By browsing the 3 views of the application, how many files did your browser download in total? How many time did it took to load them all?
+
+Le navigateur charge 9 fichiers au total en 589ms.
 
